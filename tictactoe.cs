@@ -29,15 +29,36 @@ class tictactoe
         Console.Write(array[i] + "  ");
       }
     }
-    board = array;
   }
   private static void guess(int[] array)
   {
     Console.WriteLine($"type the row you want to place a {playerTurn} on");
-    int row = Int32.Parse(Console.ReadLine()!) - 1;
+    string row = Console.ReadLine()!;
+    while (Int32.TryParse(row, out int res) != true)
+    {
+      Console.WriteLine("invalid input, try again");
+      Console.WriteLine($"type the row you want to place a {playerTurn} on");
+      row = Console.ReadLine()!;
+    }
     Console.WriteLine($"type the column you want to place a {playerTurn} on");
-    int column = Int32.Parse(Console.ReadLine()!) - 1;
-    int index = 3 * row + column;
+    string column = Console.ReadLine()!;
+    while (Int32.TryParse(column, out int res) != true)
+    {
+      Console.WriteLine("invalid input, try again");
+      Console.WriteLine($"type the column you want to place a {playerTurn} on");
+      column = Console.ReadLine()!;
+    }
+    int index = 3 * (Int32.Parse(row) - 1) + (Int32.Parse(column) - 1);
+    while (array[index] == 1 || array[index] == 2)
+    {
+      Console.WriteLine("that space is already occupied, try again");
+      Console.WriteLine($"type the row you want to place a {playerTurn} on");
+      row = Console.ReadLine()!;
+      Console.WriteLine($"type the column you want to place a {playerTurn} on");
+      column = Console.ReadLine()!;
+      index = 3 * (Int32.Parse(row) - 1) + (Int32.Parse(column) - 1);
+    }
+    
     array[index] = playerTurn;
     printBoard(array);
     
