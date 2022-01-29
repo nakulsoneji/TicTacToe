@@ -3,7 +3,7 @@ using System;
 class tictactoe
 {
   private static int[] board = new int[9] {0, 0, 0, 0, 0, 0, 0, 0, 0};
-  private static int playerTurn = 1;
+  private static int playerTurn;
   private static void Main(string[] args) 
   {
     printBoard(board);
