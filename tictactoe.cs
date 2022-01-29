@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 class tictactoe
 {
@@ -32,8 +32,7 @@ class tictactoe
     int row = Int32.Parse(Console.ReadLine()!) - 1;
     Console.WriteLine($"type the column you want to place a {turn} on");
     int column = Int32.Parse(Console.ReadLine()!) - 1;
-    int index = 2 * row + column;
-    Console.WriteLine(index);
+    int index = 3 * row + column;
     array[index] = turn;
     printBoard(array);
     Console.WriteLine(turn);
